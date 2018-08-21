@@ -11,7 +11,7 @@ import UIKit
 
 class UIUtils{
     
-    let DEFAULT_PARAMS = ["x": 0 as Double, "y": 0 as Double, "width": 70 as Double, "height": 30 as Double, "text": "DEFAULT"] as [String : Any];
+    let DEFAULT_PARAMS = ["x": 0 as Double, "y": 0 as Double, "width": 70 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black] as [String : Any];
     
     /********************* UI Button Creation *********************/
     
@@ -25,6 +25,7 @@ class UIUtils{
         let height = new_specs["height"] as! Double;
         let x = new_specs["x"] as! Double - width/2;
         let y = new_specs["y"] as! Double - height/2;
+        button.setTitleColor(new_specs["color"] as? UIColor, for: .normal)
         button.frame = CGRect(x: x, y: y, width: width, height: height);
         view.addSubview(button);
         return button;
@@ -40,6 +41,7 @@ class UIUtils{
         let height = new_specs["height"] as! Double;
         let x = new_specs["x"] as! Double - width/2;
         let y = new_specs["y"] as! Double - height/2;
+        label.textColor = new_specs["color"] as? UIColor;
         label.frame = CGRect(x: x, y: y, width: width, height: height);
         view.addSubview(label);
         return label;

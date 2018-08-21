@@ -16,12 +16,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Create a button
-        let demo_button = utils.create_button(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.15, "text": "button!"]);
+        let demo_button = utils.create_button(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.15, "text": "button!", "color": UIColor.green]);
         // Specify button action
         demo_button.addTarget(self, action:#selector(buttonClicked), for: .touchUpInside)
         
         // Create a Label
-        let demo_newlabel = utils.create_label(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.10, "width": 500.0, "height": 100.0, "text": "hi there, this is a demo for my module!"]);
+        let demo_newlabel = utils.create_label(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.10, "width": 500.0, "height": 100.0, "text": "hi there, this is a demo for my module!", "color": UIColor.orange]);
     }
     
     // Func for demo_button
