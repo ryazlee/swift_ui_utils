@@ -21,12 +21,14 @@ class ViewController: UIViewController {
         demo_button.addTarget(self, action:#selector(buttonClicked), for: .touchUpInside)
         
         // Create a Label
-        let demo_newlabel = utils.create_label(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.10, "width": 500.0, "height": 100.0, "text": "hi there, this is a demo for my module!", "color": UIColor.orange]);
+        let demo_label = utils.create_label(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.10, "width": 500.0, "height": 100.0, "text": "hi there, this is a demo for my module!", "color": UIColor.orange]);
     }
     
     // Func for demo_button
     @objc func buttonClicked() {
         print("Button Clicked");
+        let start_height = Double(self.view.frame.height) * 0.20;
+        utils.create_label(view: self.view, specs: ["x": Double(self.view.frame.width) * drand48() , "y": start_height + Double(self.view.frame.height) * drand48(), "width": 500.0, "height": 100.0, "text": "button pushed", "color": UIColor.purple]);
     }
 
     override func didReceiveMemoryWarning() {
