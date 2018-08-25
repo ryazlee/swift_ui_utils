@@ -11,7 +11,7 @@ import UIKit
 
 class UIUtils{
     
-    let DEFAULT_PARAMS = ["x": 0 as Double, "y": 0 as Double, "width": 70 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black] as [String : Any];
+    let DEFAULT_PARAMS = ["x": 0 as Double, "y": 0 as Double, "width": 70 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line] as [String : Any];
     
     /********************* UI Button Creation *********************/
     
@@ -45,6 +45,22 @@ class UIUtils{
         label.frame = CGRect(x: x, y: y, width: width, height: height);
         view.addSubview(label);
         return label;
+    }
+    
+    // Creates a label based on passed in parameters
+    func create_text_field(view: UIView, specs: [String: Any]) -> UITextField {
+        let text_field = UITextField();
+        var new_specs = self.eval_specs(specs: specs);
+        text_field.placeholder = new_specs["placeholder_text"] as? String;
+        text_field.borderStyle = new_specs["border_style"] as! UITextBorderStyle;
+        let width = new_specs["width"] as! Double;
+        let height = new_specs["height"] as! Double;
+        let x = new_specs["x"] as! Double - width/2;
+        let y = new_specs["y"] as! Double - height/2;
+        text_field.textColor = new_specs["color"] as? UIColor;
+        text_field.frame = CGRect(x: x, y: y, width: width, height: height);
+        view.addSubview(text_field);
+        return text_field;
     }
     
     /********************* Helper Functions *********************/
