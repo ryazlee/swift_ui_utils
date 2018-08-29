@@ -11,7 +11,7 @@ import UIKit
 
 class UIUtils{
     
-    let DEFAULT_PARAMS = ["x": 0 as Double, "y": 0 as Double, "width": 70 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line] as [String : Any];
+    let DEFAULT_PARAMS = ["x": 0 as Double, "y": 0 as Double, "width": 70 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line, "title_color": UIColor.black] as [String : Any];
     
     /********************* UI Button Creation *********************/
     
@@ -20,12 +20,13 @@ class UIUtils{
         let button = UIButton();
         var new_specs = self.eval_specs(specs: specs);
         button.setTitle((new_specs["text"] as! String), for: .normal);
-        button.setTitleColor(UIColor.blue, for: .normal);
+        button.setTitleColor(new_specs["title_color"] as? UIColor, for: .normal);
+        button.backgroundColor = new_specs["color"] as? UIColor;
+        button.layer.cornerRadius = 10.0;
         let width = new_specs["width"] as! Double;
         let height = new_specs["height"] as! Double;
         let x = new_specs["x"] as! Double - width/2;
         let y = new_specs["y"] as! Double - height/2;
-        button.setTitleColor(new_specs["color"] as? UIColor, for: .normal)
         button.frame = CGRect(x: x, y: y, width: width, height: height);
         view.addSubview(button);
         return button;
@@ -37,6 +38,8 @@ class UIUtils{
         var new_specs = self.eval_specs(specs: specs);
         label.text = (new_specs["text"] as! String);
         label.textAlignment = .center;
+        label.lineBreakMode = .byWordWrapping;
+        label.numberOfLines = 10
         let width = new_specs["width"] as! Double;
         let height = new_specs["height"] as! Double;
         let x = new_specs["x"] as! Double - width/2;
