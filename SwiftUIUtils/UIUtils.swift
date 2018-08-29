@@ -26,11 +26,7 @@ class UIUtils{
         button.setTitle((new_specs["text"] as! String), for: .normal);
         button.setTitleColor(new_specs["title_color"] as? UIColor, for: .normal);
         button.backgroundColor = new_specs["color"] as? UIColor;
-        let width = new_specs["width"] as! Double;
-        let height = new_specs["height"] as! Double;
-        let x = new_specs["x"] as! Double - width/2;
-        let y = new_specs["y"] as! Double - height/2;
-        button.frame = CGRect(x: x, y: y, width: width, height: height);
+        button.frame = create_frame(specs_x: new_specs["x"]!, specs_y: new_specs["y"]!, specs_width: new_specs["width"]!, specs_height: new_specs["height"]!);
         // End customizable specs
         view.addSubview(button);
         return button;
@@ -47,12 +43,8 @@ class UIUtils{
         // End non-customizable specs
         // Begin customizable specs
         label.text = (new_specs["text"] as! String);
-        let width = new_specs["width"] as! Double;
-        let height = new_specs["height"] as! Double;
-        let x = new_specs["x"] as! Double - width/2;
-        let y = new_specs["y"] as! Double - height/2;
         label.textColor = new_specs["color"] as? UIColor;
-        label.frame = CGRect(x: x, y: y, width: width, height: height);
+        label.frame = create_frame(specs_x: new_specs["x"]!, specs_y: new_specs["y"]!, specs_width: new_specs["width"]!, specs_height: new_specs["height"]!);
         // End customizable specs
         view.addSubview(label);
         return label;
@@ -67,12 +59,8 @@ class UIUtils{
         // Begin customizable specs
         text_field.placeholder = new_specs["placeholder_text"] as? String;
         text_field.borderStyle = new_specs["border_style"] as! UITextBorderStyle;
-        let width = new_specs["width"] as! Double;
-        let height = new_specs["height"] as! Double;
-        let x = new_specs["x"] as! Double - width/2;
-        let y = new_specs["y"] as! Double - height/2;
         text_field.textColor = new_specs["color"] as? UIColor;
-        text_field.frame = CGRect(x: x, y: y, width: width, height: height);
+        text_field.frame = create_frame(specs_x: new_specs["x"]!, specs_y: new_specs["y"]!, specs_width: new_specs["width"]!, specs_height: new_specs["height"]!);
         // End customizable specs
         view.addSubview(text_field);
         return text_field;
@@ -87,6 +75,14 @@ class UIUtils{
             }
         }
         return new_specs;
+    }
+    // Returns a frame for the UI Elems based on x, y, width, and height
+    func create_frame(specs_x: Any, specs_y: Any, specs_width: Any, specs_height: Any) -> CGRect {
+        let width = specs_width as! Double;
+        let height = specs_height as! Double;
+        let x = specs_x as! Double - width/2;
+        let y = specs_y as! Double - height/2;
+        return CGRect(x: x, y: y, width: width, height: height);
     }
 }
 
