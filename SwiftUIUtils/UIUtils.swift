@@ -19,15 +19,19 @@ class UIUtils{
     func create_button (view: UIView, specs: [String : Any]) -> UIButton {
         let button = UIButton();
         var new_specs = self.eval_specs(specs: specs);
+        // Begin non-customizable specs
+        button.layer.cornerRadius = 10.0;
+        // End non-customizable specs
+        // Begin customizable specs
         button.setTitle((new_specs["text"] as! String), for: .normal);
         button.setTitleColor(new_specs["title_color"] as? UIColor, for: .normal);
         button.backgroundColor = new_specs["color"] as? UIColor;
-        button.layer.cornerRadius = 10.0;
         let width = new_specs["width"] as! Double;
         let height = new_specs["height"] as! Double;
         let x = new_specs["x"] as! Double - width/2;
         let y = new_specs["y"] as! Double - height/2;
         button.frame = CGRect(x: x, y: y, width: width, height: height);
+        // End customizable specs
         view.addSubview(button);
         return button;
     }
@@ -36,16 +40,20 @@ class UIUtils{
     func create_label(view: UIView, specs: [String: Any]) -> UILabel {
         let label = UILabel();
         var new_specs = self.eval_specs(specs: specs);
-        label.text = (new_specs["text"] as! String);
+        // Begin non-customizable specs
         label.textAlignment = .center;
         label.lineBreakMode = .byWordWrapping;
         label.numberOfLines = 10
+        // End non-customizable specs
+        // Begin customizable specs
+        label.text = (new_specs["text"] as! String);
         let width = new_specs["width"] as! Double;
         let height = new_specs["height"] as! Double;
         let x = new_specs["x"] as! Double - width/2;
         let y = new_specs["y"] as! Double - height/2;
         label.textColor = new_specs["color"] as? UIColor;
         label.frame = CGRect(x: x, y: y, width: width, height: height);
+        // End customizable specs
         view.addSubview(label);
         return label;
     }
@@ -54,6 +62,9 @@ class UIUtils{
     func create_text_field(view: UIView, specs: [String: Any]) -> UITextField {
         let text_field = UITextField();
         var new_specs = self.eval_specs(specs: specs);
+        // Begin non-customizable specs
+        // End non-customizable specs
+        // Begin customizable specs
         text_field.placeholder = new_specs["placeholder_text"] as? String;
         text_field.borderStyle = new_specs["border_style"] as! UITextBorderStyle;
         let width = new_specs["width"] as! Double;
@@ -62,6 +73,7 @@ class UIUtils{
         let y = new_specs["y"] as! Double - height/2;
         text_field.textColor = new_specs["color"] as? UIColor;
         text_field.frame = CGRect(x: x, y: y, width: width, height: height);
+        // End customizable specs
         view.addSubview(text_field);
         return text_field;
     }
