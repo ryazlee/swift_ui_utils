@@ -55,7 +55,7 @@ class UIUtils{
         let text_field = UITextField();
         var new_specs = self.eval_specs(specs: specs);
         // Begin non-customizable specs
-        // End non-customizable specs
+git        // End non-customizable specs
         // Begin customizable specs
         text_field.placeholder = new_specs["placeholder_text"] as? String;
         text_field.borderStyle = new_specs["border_style"] as! UITextBorderStyle;

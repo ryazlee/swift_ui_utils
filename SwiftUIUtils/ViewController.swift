@@ -14,6 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         // Create a label
         let demo_label = utils.create_label(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.075, "width": 300.0, "height": 200.0, "text": "hi there, this is a demo for my swift ui utils library!", "color": UIColor.orange]);
         
@@ -39,3 +40,14 @@ class ViewController: UIViewController {
     }
 }
 
+extension UIViewController{
+    func hideKeyboard(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+}
