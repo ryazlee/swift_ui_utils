@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         // Create a label
         let demo_label = utils.create_label(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.075, "width": 300.0, "height": 200.0, "text": "hi there, this is a demo for my swift ui utils library!", "color": UIColor.orange]);
         
+        let default_elem = utils.create_label(view: self.view, specs: [:]);
+        
         // Create a text field
         let demo_text_field = utils.create_text_field(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.15, "text": "button!", "color": UIColor.red, "placeholder_text": "Type in something", "border_style": UITextBorderStyle.roundedRect]);
         

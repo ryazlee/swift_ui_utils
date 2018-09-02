@@ -11,7 +11,7 @@ import UIKit
 
 class UIUtils{
     
-    let DEFAULT_PARAMS = ["x": 0 as Double, "y": 0 as Double, "width": 70 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line, "title_color": UIColor.black] as [String : Any];
+    let DEFAULT_PARAMS = ["x": 50 as Double, "y": 50 as Double, "width": 100 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line, "title_color": UIColor.black] as [String : Any];
     
     /********************* UI Button Creation *********************/
     
