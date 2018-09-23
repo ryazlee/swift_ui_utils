@@ -11,7 +11,7 @@ import UIKit
 
 class UIUtils{
     
-    let DEFAULT_PARAMS = ["x": 50 as Double, "y": 50 as Double, "width": 100 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line, "title_color": UIColor.black, "image_name": "DEFAULT"] as [String : Any];
+    let DEFAULT_PARAMS = ["x": 50 as Double, "y": 50 as Double, "width": 100 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line, "title_color": UIColor.black, "image_name": "DEFAULT", "border_color": UIColor.white, "border_width": 0 as CGFloat] as [String : Any];
     
     /********************* UI Button Creation *********************/
     
@@ -68,13 +68,18 @@ class UIUtils{
     
     func create_image(view: UIView, specs: [String: Any]) -> UIImageView {
         var new_specs = self.eval_specs(specs: specs);
+        let image_view = UIImageView();
         // Begin non-customizable specs
+        image_view.layer.masksToBounds = true;
+        image_view.clipsToBounds = true;
         // End non-customizable specs
         // Begin customizable specs
-        let image_name = new_specs["image_name"] as! String;
-        let image = UIImage(named: image_name)
-        let image_view = UIImageView(image: image!)
         image_view.frame = create_frame(specs_x: new_specs["x"]!, specs_y: new_specs["y"]!, specs_width: new_specs["width"]!, specs_height: new_specs["height"]!);
+        image_view.layer.borderWidth = new_specs["border_width"] as! CGFloat;
+        image_view.layer.borderColor = (new_specs["border_color"] as! UIColor).cgColor;
+        let image_name = new_specs["image_name"] as! String;
+        let image = UIImage(named: image_name);
+        image_view.image = image;
         // End customizable specs
         view.addSubview(image_view);
         return image_view;

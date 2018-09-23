@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
+        
         // Create a label
         let demo_label = utils.create_label(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.075, "width": 300.0, "height": 200.0, "text": "hi there, this is a demo for my swift ui utils library!", "color": UIColor.orange]);
                 
@@ -27,7 +28,7 @@ class ViewController: UIViewController {
         demo_button.addTarget(self, action:#selector(buttonClicked), for: .touchUpInside);
         
         // Create a image
-        let demo_image = utils.create_image(view: self.view, specs: ["image_name": "squirrel", "x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.20]);
+        let demo_image = utils.create_image(view: self.view, specs: ["image_name": "squirrel", "x": Double(self.view.center.x), "y": Double(self.view.frame.height) * 0.8, "width": Double(self.view.frame.width) * 0.8, "height": Double(self.view.frame.height) * 0.3, "border_style": UITextBorderStyle.roundedRect, "border_width": 6.0 as CGFloat, "border_color": UIColor.yellow]);
     }
     
     // Func for demo_button
