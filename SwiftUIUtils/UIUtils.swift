@@ -11,14 +11,14 @@ import UIKit
 
 class UIUtils{
     
-    let DEFAULT_PARAMS = ["x": 50 as Double, "y": 50 as Double, "width": 100 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line, "title_color": UIColor.black] as [String : Any];
+    let DEFAULT_PARAMS = ["x": 50 as Double, "y": 50 as Double, "width": 100 as Double, "height": 30 as Double, "text": "DEFAULT", "color": UIColor.black, "placeholder_text": "DEFAULT", "border_style": UITextBorderStyle.line, "title_color": UIColor.black, "image_name": "DEFAULT"] as [String : Any];
     
     /********************* UI Button Creation *********************/
     
     // Creates a button based on passed in parameters
     func create_button (view: UIView, specs: [String : Any]) -> UIButton {
-        let button = UIButton();
         var new_specs = self.eval_specs(specs: specs);
+        let button = UIButton();
         // Begin non-customizable specs
         button.layer.cornerRadius = 10.0;
         // End non-customizable specs
@@ -34,8 +34,8 @@ class UIUtils{
     
     // Creates a label based on passed in parameters
     func create_label(view: UIView, specs: [String: Any]) -> UILabel {
-        let label = UILabel();
         var new_specs = self.eval_specs(specs: specs);
+        let label = UILabel();
         // Begin non-customizable specs
         label.textAlignment = .center;
         label.lineBreakMode = .byWordWrapping;
@@ -52,8 +52,8 @@ class UIUtils{
     
     // Creates a label based on passed in parameters
     func create_text_field(view: UIView, specs: [String: Any]) -> UITextField {
-        let text_field = UITextField();
         var new_specs = self.eval_specs(specs: specs);
+        let text_field = UITextField();
         // Begin non-customizable specs
         // End non-customizable specs
         // Begin customizable specs
@@ -64,6 +64,20 @@ class UIUtils{
         // End customizable specs
         view.addSubview(text_field);
         return text_field;
+    }
+    
+    func create_image(view: UIView, specs: [String: Any]) -> UIImageView {
+        var new_specs = self.eval_specs(specs: specs);
+        // Begin non-customizable specs
+        // End non-customizable specs
+        // Begin customizable specs
+        let image_name = new_specs["image_name"] as! String;
+        let image = UIImage(named: image_name)
+        let image_view = UIImageView(image: image!)
+        image_view.frame = create_frame(specs_x: new_specs["x"]!, specs_y: new_specs["y"]!, specs_width: new_specs["width"]!, specs_height: new_specs["height"]!);
+        // End customizable specs
+        view.addSubview(image_view);
+        return image_view;
     }
     
     /********************* Helper Functions *********************/
