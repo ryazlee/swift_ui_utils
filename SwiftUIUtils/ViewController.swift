@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         let demo_text_field = utils.create_text_field(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.15, "text": "button!", "color": UIColor.red, "placeholder_text": "Type in something", "border_style": UITextBorderStyle.roundedRect]);
         
         // Create a button
-        let demo_button = utils.create_button(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.20, "text": "button!", "color": UIColor.red, "title_color": UIColor.white]);
+        let demo_button = utils.create_button(view: self.view, specs: ["x": Double(self.view.center.x) , "y": Double(self.view.frame.height) * 0.20, "width": Double(self.view.frame.height) * 0.20, "text": "button!", "color": UIColor.red, "title_color": UIColor.white]);
         // Specify button action
         demo_button.addTarget(self, action:#selector(buttonClicked), for: .touchUpInside);
         

@@ -21,6 +21,7 @@ class UIUtils{
         let button = UIButton();
         // Begin non-customizable specs
         button.layer.cornerRadius = 10.0;
+        button.showsTouchWhenHighlighted = true;
         // End non-customizable specs
         // Begin customizable specs
         button.setTitle((new_specs["text"] as! String), for: .normal);
